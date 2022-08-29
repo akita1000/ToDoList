@@ -4,7 +4,7 @@ import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
 
 @Dao
-interface NoteDao : List<Note> {
+interface NoteDao {
     @Query("SELECT * FROM note_table")
     suspend fun getAllNotes(): List<Note>
 
@@ -14,6 +14,6 @@ interface NoteDao : List<Note> {
     @Update(onConflict = REPLACE)
     suspend fun updateDB(note: Note)
 
-   @Delete
+    @Delete
     suspend fun deleteDB(note: Note)
 }
