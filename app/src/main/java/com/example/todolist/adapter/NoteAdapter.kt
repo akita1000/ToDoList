@@ -15,9 +15,17 @@ class NoteAdapter(var notesList: MutableList<Note>) : RecyclerView.Adapter<NoteV
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val note = notesList[position]
+        holder.itemBinding.textViewTitle.text = note.title
+//        holder.itemBinding.textViewDate.text = note.createdData
+        holder.itemBinding.textViewDescription.text = note.description
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return notesList.size
+    }
+
+    fun setNoteList(notesList: List<Note>) {
+        this.notesList = notesList.toMutableList()
+        notifyDataSetChanged()
     }
 }
